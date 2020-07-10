@@ -3,7 +3,133 @@
 
 <head>
     <title>AFS Country Quiz</title>
-    <!--<link rel="stylesheet" href="main.css">-->
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="main.css">
+
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Lato", sans-serif;
+            font-weight: 100;
+            line-height: 1.7rem;
+            background: no-repeat linear-gradient(250deg, #ED145B, #F58025);
+        }
+        .quiz-container {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 3rem;
+            width: 60%;
+            margin: 5rem auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            min-height: 50%;
+        }
+
+        .title {
+            margin-top: 0;
+            margin-bottom: 3rem;
+            color: #888;
+            font-weight: 400;
+            font-size: 2.5rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .question {
+            margin: 2rem 0;
+            font-size: 1.5rem;
+        }
+        .option {
+            margin: 1rem;
+            color: #00000095;
+            background: rgba(255, 255, 255, 0.1);
+            width: 80%;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+        }
+        .option input:checked .option {
+            background: #08038c;
+            color: #000;
+        }
+        .option1, .option2, .option3 {
+            padding-left: 10px;
+        }
+        .controls > * {
+            margin: 1rem;
+        }
+        button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 300;
+            color: white;
+            outline: none;
+            transform: scale(0.98);
+            transition: all 0.2s;
+        }
+        button.previous {
+            background: #c84630;
+        }
+        button.next {
+            background: #00AEEF;
+        }
+        button.restart {
+            background: #0cf574;
+            color: #00000050;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.4s;
+        }
+        button.restart:hover {
+            color: #00000098;
+        }
+        button:hover,
+        button:focus {
+            transform: scale(1);
+            font-weight: 500;
+        }
+        .result {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2.5rem;
+            min-height: 100vh;
+        }
+        .final-score {
+            color: #00000099;
+        }
+        .summary {
+            font-size: 1rem;
+            text-shadow: 1px 1px #ffffff50;
+            color: #00000099;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+        .summary h1 {
+            align-self: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -108,7 +234,6 @@
 
         let currentQuestion = 0;
         let score = [];
-        let selectedAnswersData = [];
         const totalQuestions = questions.length;
 
         const container = document.querySelector('.quiz-container');
@@ -118,7 +243,7 @@
         const option3 = document.querySelector('.option3');
         const nextButton = document.querySelector('.next');
         const previousButton = document.querySelector('.previous');
-        const restartButton = document.querySelector('.restart');
+        /*const restartButton = document.querySelector('.restart');*/
         const result = document.querySelector('.result');
 
         //Function to generate question
@@ -149,10 +274,12 @@
             //Get value of selected radio
             const answerScore = Number(selectedOption.nextElementSibling.getAttribute('data-total'));
 
+            console.log("ANSWERSCORE: " + answerScore);
+
             ////Add the answer score to the score array
             score.push(answerScore);
 
-            selectedAnswersData.push();
+            console.log("Score: " + score);
 
 
             const totalScore = score.reduce((total, currentNum) => total + currentNum);
@@ -169,6 +296,11 @@
             //If the quiz is finished then we hide the questions container and show the results
             if(currentQuestion === totalQuestions) {
                 container.style.display = 'none';
+
+                /* Check which answer was selected the most */
+
+
+
                 result.innerHTML =
                     `<h1 class="final-score">Your score: ${totalScore}</h1>
                          <div class="summary">

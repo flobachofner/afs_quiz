@@ -1,10 +1,8 @@
-# Simple-Personality-Quiz
+# AFS Country Quiz
 
-A simple quiz built with HTML, CSS, JavaScript.
+Based on the work of **Evans Dube** - (https://github.com/edubz99) <br>
+and his quiz implementation at https://codepen.io/edubz99/pen/PeRjNb?editors=1010
 
-## URL
-
-https://codepen.io/edubz99/pen/PeRjNb?editors=1010
 
 ### Browser Support
 
@@ -20,8 +18,4 @@ This quiz is built using Javascript, HTML & CSS. Currently the application offer
 
 ## Authors
 
-* **Evans Dube** - (https://github.com/edubz99)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Florian Bachofner - (https://github.com/flobachofner)
